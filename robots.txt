@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sirimallarajkumar225-a11y.github.io/ras-academy/sitemap.xml
