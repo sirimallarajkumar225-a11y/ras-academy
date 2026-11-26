@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A vendor-neutral guide to Linux server hardware error diagnostics, reading logs, correlating evidence and investigating ECC, CPU MCA and PCIe AER reports.">
+<title>Linux Hardware Error Diagnostics | RAS Academy</title>
+<link rel="canonical" href="https://sirimallarajkumar225-a11y.github.io/ras-academy/linux-hardware-diagnostics.html">
+<meta name="robots" content="index, follow">
+</head>
+<body>
+<main>
+<header><p><a href="./index.html">RAS Academy</a></p><h1>Linux Hardware Error Diagnostics</h1><p>A practical, evidence-first approach to understanding server hardware error reports on Linux. Examples are illustrative; commands and availability vary by distribution, kernel, hardware and configuration.</p></header>
+<section><h2>Start with the scope and evidence</h2><p>Before investigating, document the system identity, kernel and software context, workload, time window, impact and what triggered the investigation. Use authorized, read-only collection wherever possible. Keep original records and note time-zone differences.</p></section>
+<section><h2>Review system messages</h2><p>On systems using systemd, journal records can help establish event context. For example, <code>journalctl -k</code> displays kernel messages, while <code>journalctl --since "1 hour ago"</code> filters journal entries by time. Syntax, permissions and retention vary. Avoid clearing logs or changing settings during initial evidence collection.</p><p>Where available and appropriate, tools such as <code>rasdaemon</code> can record or report hardware-related RAS events. Availability, configuration and support differ by platform. Consult the distribution documentation and tool help before relying on its output.</p></section>
+<section><h2>Investigate by reporting subsystem</h2><h3>Memory and ECC</h3><p>Correlate memory-related records with available topology, event location validity, trend and platform management evidence. A counter or single event alone is not proof of a failing component. <a href="./ecc-memory-errors.html">Read the ECC memory errors guide.</a></p><h3>CPU machine-check records</h3><p>Preserve the original record and identify which fields are valid. Interpret classifications using applicable architecture and platform documentation. <a href="./cpu-mca-errors.html">Read the CPU MCA guide.</a></p><h3>PCI Express AER</h3><p>Review reporting source, event category and context; correlate with related device and system records without assuming a root cause. <a href="./pcie-aer-guide.html">Read the PCIe AER guide.</a></p></section>
+<section><h2>Correlate before concluding</h2><ol><li>Normalize timestamps and identify uncertainty.</li><li>Compare event records from distinct reporting sources without conflating them.</li><li>Establish whether the event repeats, changes or coincides with workload or service impact.</li><li>Separate confirmed observations from hypotheses.</li><li>Use supported diagnostic and service procedures to determine next steps.</li></ol></section>
+<section><h2>Evidence checklist</h2><ul><li>System and configuration context (redact sensitive identifiers).</li><li>Original event messages and timestamps.</li><li>Reporting source and collection method.</li><li>Workload and observed service impact.</li><li>Expected behavior and applicable documentation.</li><li>Hypotheses, gaps and planned next actions.</li></ul></section>
+<section><h2>Further learning</h2><ul><li><a href="./server-ras-diagnostics.html">Server RAS diagnostics and evidence</a></li><li><a href="./ecc-memory-errors.html">ECC memory errors</a></li><li><a href="./cpu-mca-errors.html">CPU machine-check architecture</a></li><li><a href="./pcie-aer-guide.html">PCIe AER errors</a></li><li><a href="./index.html">Explore simulated RAS Academy labs</a></li></ul></section>
+<footer><p>Educational guide only. Do not perform fault injection or disruptive tests on production systems. Follow approved platform procedures and vendor documentation.</p></footer>
+</main></body></html>
