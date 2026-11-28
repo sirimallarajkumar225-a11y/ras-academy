@@ -27,9 +27,7 @@
   "inLanguage": "en"
 }
 </script>
-<script>
-document.getElementById("navToggle")?.addEventListener("click",()=>{const nav=document.getElementById("primaryNav"),btn=document.getElementById("navToggle");const open=nav.classList.toggle("nav-open");btn.setAttribute("aria-expanded",String(open));btn.textContent=open?"Close ×":"Menu ☰";});document.getElementById("primaryNav")?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{document.getElementById("primaryNav").classList.remove("nav-open");document.getElementById("navToggle").setAttribute("aria-expanded","false");document.getElementById("navToggle").textContent="Menu ☰";}));
-</script>
+
 
 <style>
 :root{--bg:#0b1020;--panel:#121a2e;--panel2:#18233b;--line:#293653;--text:#e8eefc;--muted:#9eacc8;--cyan:#55d6e8;--green:#63d6a2;--amber:#ffc66d;--red:#ff7d89;--purple:#b9a0ff}
@@ -282,5 +280,8 @@ document.getElementById('rasDomain').addEventListener('change',e=>{const notes={
 // RAS Academy 2.5: evidence report builder
 (()=>{const root=document.getElementById('rasreport');if(!root)return;const ids=['rrTitle','rrSystem','rrDate','rrWorkload','rrExpected','rrObserved','rrImpact','rrAssessment','rrNext','rrNotes'];const get=id=>document.getElementById(id).value;function make(){return '# '+(get('rrTitle')||'RAS Investigation Report')+'\\n\\n- System / platform: '+get('rrSystem')+'\\n- Date / test window: '+get('rrDate')+'\\n\\n## Workload / conditions\\n'+get('rrWorkload')+'\\n\\n## Expected behavior\\n'+get('rrExpected')+'\\n\\n## Observed evidence\\n'+get('rrObserved')+'\\n\\n## Impact / scope\\n'+get('rrImpact')+'\\n\\n## Assessment (facts vs hypotheses)\\n'+get('rrAssessment')+'\\n\\n## Next actions\\n'+get('rrNext')+'\\n\\n## Additional notes\\n'+get('rrNotes')+'\\n\\n---\\nDraft only. Confirm facts, redact sensitive information and follow approved procedures.';}const out=document.getElementById('rrOutput');document.getElementById('rrGenerate').onclick=()=>out.textContent=make();document.getElementById('rrCopy').onclick=()=>{if(out.textContent==='Your draft report will appear here.')out.textContent=make();navigator.clipboard?.writeText(out.textContent)};document.getElementById('rrDownload').onclick=()=>{const text=make();const blob=new Blob([text],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ras-investigation-report.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};document.getElementById('rrClear').onclick=()=>{ids.forEach(id=>document.getElementById(id).value='');out.textContent='Your draft report will appear here.'};})();
 
+</script>
+<script>
+document.getElementById("navToggle")?.addEventListener("click",()=>{const nav=document.getElementById("primaryNav"),btn=document.getElementById("navToggle");const open=nav.classList.toggle("nav-open");btn.setAttribute("aria-expanded",String(open));btn.textContent=open?"Close ×":"Menu ☰";});document.getElementById("primaryNav")?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{document.getElementById("primaryNav").classList.remove("nav-open");document.getElementById("navToggle").setAttribute("aria-expanded","false");document.getElementById("navToggle").textContent="Menu ☰";}));
 </script>
 </body></html>
