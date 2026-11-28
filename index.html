@@ -42,11 +42,30 @@ a{color:var(--cyan);text-decoration:none}button,input,select,textarea{font:inher
 /* RAS Academy 2.1: interactive decision simulator */
 .simulator-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.sim-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px}.sim-card select{width:100%;background:#101a2d;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px;margin:8px 0}.sim-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.sim-feedback{margin-top:12px;border:1px solid var(--line);background:var(--panel2);padding:14px;border-radius:11px;min-height:80px}.sim-option{display:block;text-align:left;width:100%;margin:8px 0}.sim-option:hover{border-color:var(--cyan)}@media(max-width:580px){.simulator-grid{grid-template-columns:1fr}}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}@media(min-width:851px){.nav-toggle{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Phase 4.1: visual polish and accessibility improvements */
+:root{--focus-ring:#a5f3fc;--surface-shadow:0 14px 36px rgba(0,0,0,.18)}
+html{scroll-padding-top:84px}
+section[id],main [id]{scroll-margin-top:84px}
+.skip-link{position:absolute;left:12px;top:-100px;z-index:100;padding:12px 16px;background:var(--cyan);color:#07111c;border-radius:10px;font-weight:800}
+.skip-link:focus{top:12px}
+.hero h1{letter-spacing:-1.6px}
+.hero-card,.panel,.stat,.track,.lab,.qa,.challenge,.sim-card,.ras-node,.scenario-output{box-shadow:var(--surface-shadow);transition:border-color .18s ease,transform .18s ease}
+.track:hover,.lab:hover,.ras-node:hover,.stat:hover{border-color:#496887;transform:translateY(-2px)}
+.section-head h2{letter-spacing:-.45px}
+button,a,.qa summary,.challenge summary{touch-action:manipulation}
+button{transition:background .18s ease,border-color .18s ease,transform .18s ease}
+button:active{transform:translateY(1px)}
+input,select,textarea{max-width:100%}
+.termform button,.sim-option{min-height:44px}
+@media(max-width:580px){.hero h1{letter-spacing:-.8px}.panel,.lab,.track,.sim-card{padding:15px}.navlinks.nav-open a{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.hero-card,.panel,.stat,.track,.lab,.qa,.challenge,.sim-card,.ras-node,.scenario-output,button{transition:none;transform:none}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="top"><div class="wrap nav"><div class="brand">◈ <b>RAS</b> ACADEMY</div><button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu ☰</button><nav class="navlinks" id="primaryNav"><a href="#curriculum">Curriculum</a><a href="#terminal">Terminal Lab</a><a href="#labs">Labs</a><a href="#interview">Interview Q&A</a><a href="#debug">Debugging</a><a href="#plan">Test Plans</a><a href="#raspath">RAS Path</a><a href="#eccvisual">ECC Lab</a><a href="#mcaexplorer">MCA Explorer</a><a href="#pcieaerlab">PCIe AER</a><a href="#rasreport">Report Builder</a><a href="#progress">Progress</a></nav><span class="pill">PUBLIC-INFO EDITION</span></div></header>
-<main class="wrap">
+<main class="wrap" id="main-content">
 <section class="hero">
 <div><div class="eyebrow">Server reliability • practical validation • interview readiness</div><h1>Learn RAS.<br><span style="color:var(--cyan)">Validate with confidence.</span></h1><p>A practical, vendor-neutral learning environment for Reliability, Availability and Serviceability. Explore memory and PCIe error handling, firmware-to-OS reporting, Linux diagnostics, validation planning and realistic debugging scenarios.</p><a href="#curriculum"><button class="primary">Start learning →</button></a> <a href="#terminal"><button>Open terminal simulator</button></a></div>
 <div class="hero-card"><div class="tag">The RAS lifecycle</div><h3>From fault to recovery</h3><p class="muted">A useful mental model for investigating platform errors.</p><div class="flow"><span class="step">1 · Inject / occur</span><span class="arrow">→</span><span class="step">2 · Detect</span><span class="arrow">→</span><span class="step">3 · Record</span><span class="arrow">→</span><span class="step">4 · Report</span><span class="arrow">→</span><span class="step">5 · Recover</span></div><p class="small">Actual ownership and sequence vary by component, platform generation, firmware configuration and operating system.</p></div>
